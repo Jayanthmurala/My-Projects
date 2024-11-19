@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+    Update-Task
+{% endblock %}
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px;">
+    <div style="width:500px; border-radius:10px; box-shadow: 3px 6px 18px 6px #b3c1c7; background: #fff;">
+        <br>
+        <h2 style="text-align: center; margin-top: 10px; color: #0cb4d2;">Edit <span style="color: #6b6b6b;">x</span> Update</h2>
+        
+        <!-- The action URL should submit to the correct edit task URL -->
+        <form method="POST" action="{% url 'edit_task' pk=update.id %}">
+            {% csrf_token %}
+            <div style="padding:20px; margin-left:15px;">
+                <span style="margin-left:10px;">Title</span>
+                <br>
+                <input type="text" name="task_name" placeholder="Add To List" value="{{ update.task_name }}"
+                    style="border-radius:10px; border: 1px solid #ddd; height:40px; padding:20px; width:400px; margin-bottom:20px;"
+                    required>
+                <br>
+                <span style="margin-left:10px;">Description</span>
+                <br>
+                <textarea name="task_details" placeholder="Add To List"
+                    style="border-radius:10px; border: 1px solid #ddd; padding:20px; width:400px; margin-bottom:20px;" required>{{ update.task_details }}</textarea>
+                <br>
+                <span style="margin-left:10px;">Reminder</span>
+                <br>
+                <input type="datetime-local" name="target_time" value="{{ update.target_time }}"
+                    style="border-radius:10px; border: 1px solid #ddd; height:40px; padding:20px; width:400px; margin-bottom:20px;" required>
+                <br><br>
+                <button type="submit" style="width: 100%; padding: 10px; background-color: #0cb4d2; color: white;">
+                    Update Task
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

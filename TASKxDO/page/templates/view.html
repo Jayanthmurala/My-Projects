@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+    Task-Details
+{% endblock %}
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px;">
+  <div class="card" style="width: 40rem; border-radius: 15px; box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); padding: 30px; background: #f9f9f9;">
+    <div class="card-body">
+      <!-- Task Title -->
+      <h5 class="card-title" style="font-size: 1.8rem; font-weight: bold; color: #333;">{{ data.task_name }}</h5>
+      <!-- Task Reminder Time -->
+      <h6 class="card-subtitle mb-2 text-muted" style="font-size: 1rem; margin-top: 5px; color: #7a7a7a;">{{ data.target_time }}</h6>
+      
+      <!-- Task Description -->
+      <p class="card-text" style="margin-top: 20px; font-size: 1rem; color: #555; line-height: 1.6;">
+        {{ data.task_details }}
+      </p>
+      
+      <!-- Task Uploaded Date -->
+      <div style="margin-top: 30px;">
+        <h5 style="font-size: 1.1rem; font-weight: normal; color: #6c757d;">Uploaded on: {{ data.uploded_on }}</h5>
+      </div>
+
+      <!-- Action Buttons -->
+      <div style="margin-top: 40px; display: flex; justify-content: space-between;">
+        <a href="{% url 'edit_task' pk=data.id %}">
+          <button style="padding: 10px 20px; background-color: #0cb4d2; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background-color 0.3s ease;">
+            Edit
+          </button>
+        </a>
+        
+        <a href="{% url 'delete_task' pk=data.id %}">
+          <button class="delete" style="padding: 10px 20px; background-color: #dc3545; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background-color 0.3s ease;">
+            Delete
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h1 class="title">LIST IT x DO IT</h1>
+    <!-- <form action="{% url 'add_task' %}"  ></form> -->
+         <!-- {% csrf_token %} -->
+        <div class="input-group">
+            <!-- <input type="text" placeholder="Add To List"> -->
+            <a href="{% url 'add_task' %}"><button>Add +</button></a>
+        </div>
+    </form>
+    {% for Data in Datas %}
+    <ul class="list">
+        <li class="list-item ">
+            <span style="font-size: 20px; margin-left:20px;"><a style='text-decoration: none;'href="{% url 'view_task' pk=Data.id  %} ">{{ Data.task_name }}</a></span>
+            {% if Data.task_name %}
+            <div class="actions">
+                <button class="delete1 " style="font-size: 15px;">{{Data.target_time|date:"H:i"}}</button>
+                <a  href="{% url 'delete_task' pk=Data.id  %}"><button class="delete" >❌</button></a>
+                <a href="{% url 'edit_task' pk=Data.id  %}"><button class="edit">✏️</button></a>
+
+                <a href="{% url 'view_task' pk=Data.id  %}"><button class="check" style="font-size: 30px;" >→</button></a>
+            </div>
+            {% endif %}
+        </li>
+        {% empty %}
+        <span>No Taks Add yet</span>
+    </ul>
+    {% endfor %}
+</div>
+
+{% endblock %}
