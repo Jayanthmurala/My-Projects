@@ -1,0 +1,17 @@
+/* Minimal custom CSS for Bootstrap enhancements */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+}
+
+.card {
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-custom {
+  font-weight: 500;
+}
